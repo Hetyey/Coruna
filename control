@@ -1,0 +1,9 @@
+Package: com.hetyey.sptmtest
+Name: SPTMTest
+Version: 1.0.0
+Architecture: iphoneos-arm
+Description: SPTM bypass test
+Maintainer: Hetyey
+Author: Hetyey
+Section: Development
+Depends: firmware (= 17.0)
